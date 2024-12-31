@@ -6,6 +6,7 @@ const ObjectRecognition = () => {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const [model, setModel] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const loadModel = async () => {
@@ -65,10 +66,26 @@ const ObjectRecognition = () => {
         return () => clearInterval(interval);
     });
 
+    useEffect(()=>{
+        setTimeout(() => {
+            setLoading(false);
+        }, 10000);
+    },[])
+
     return (
-        <div style={{ position: 'relative', display: 'inline-block', fontSize: '5rem' }}>
-            <video ref={videoRef} style={{ width: '100vw', height: '100vh' }} />
-            <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, fontSize: '5rem' }} />
+        <div className=''>
+
+            {
+                loading &&
+                <div>
+                    <img src="plane.gif" alt="" />
+                </div>
+            }
+            
+            <div style={{ position: 'relative', display: 'inline-block', fontSize: '5rem' }}>
+                <video ref={videoRef} style={{ width: '100vw', height: '100vh' }} />
+                <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, fontSize: '5rem' }} />
+            </div>
         </div>
     );
 };
