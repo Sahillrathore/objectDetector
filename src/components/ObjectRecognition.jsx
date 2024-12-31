@@ -77,8 +77,9 @@ const ObjectRecognition = () => {
 
             {
                 loading &&
-                <div>
-                    <img src="plane.gif" alt="" />
+                <div className='text-center flex justify-center flex-col'>
+                    <img src="plane.gif" alt="" className='w-64' />
+                    <p className='w-fit'>Please wait</p>
                 </div>
             }
             
